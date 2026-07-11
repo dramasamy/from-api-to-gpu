@@ -1,0 +1,7 @@
+.blogs/
+.plan/
+
+# Internal coaching/agent setup — not for public view
+AGENTS.md
+.github/
+templates/
