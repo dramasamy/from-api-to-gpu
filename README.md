@@ -8,7 +8,7 @@ I've used frontier models via API for years but never deployed one myself. This 
 
 ## What's here
 
-- **[`curriculum/`](curriculum/README.md)** — the public 32-week roadmap: what I plan to learn and build each week, plus a parallel [CUDA track](curriculum/cuda-track.md).
+- **[`roadmap/`](roadmap/README.md)** — the public 32-week roadmap: what I plan to learn and build each week, plus a parallel [CUDA track](roadmap/cuda-track.md).
 - **`week-NN-topic/`** (coming as I go) — hands-on labs, one per week: runnable code, benchmarks, and observations.
 
 ## The approach
@@ -32,7 +32,7 @@ Always quantifying memory (GB), tokens/sec, time-to-first-token (ms), and latenc
 | 7 | 25–28 | RAG and application integration |
 | 8 | 29–32 | Fine-tuning and model adaptation |
 
-Start here → **[curriculum/README.md](curriculum/README.md)**
+Start here → **[roadmap/README.md](roadmap/README.md)**
 
 ## Hardware
 

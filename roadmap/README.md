@@ -1,8 +1,8 @@
-# From API to GPU — Curriculum
+# From API to GPU — Roadmap
 
 A software engineer's hands-on journey from **AI API consumer** to **local LLM systems architect**: local deployment, inference optimization, RAG, agents, fine-tuning, CUDA, and production AI architecture on an NVIDIA DGX Spark.
 
-> This `curriculum/` directory is the **public roadmap** — what I plan to learn and build, week by week. Reproducible code, benchmarks, and hands-on labs will land in top-level folders (one-to-one with each week) as I progress.
+> This `roadmap/` directory is the **public plan** — what I plan to learn and build, week by week. Reproducible code, benchmarks, and hands-on labs will land in top-level `week-NN-topic/` folders (one-to-one with each week) as I progress.
 
 ---
 
@@ -91,25 +91,14 @@ Week files: [week-01.md](week-01.md) … [week-32.md](week-32.md).
 ```text
 from-api-to-gpu/
 ├── README.md
-├── ROADMAP.md
 ├── GLOSSARY.md
-├── HARDWARE.md
-├── BLOG_INDEX.md
-├── 00-environment/
-├── 01-first-local-model/
-├── 02-model-anatomy/
-├── 03-pytorch-foundations/
-├── 04-transformers/
-├── 05-huggingface/
-├── 06-quantization/
-├── 07-inference-engines/
-├── 08-benchmarking/
-├── 09-serving/
-├── 10-rag/
-├── 11-agents/
-├── 12-fine-tuning/
-├── 13-cuda/
-├── 14-production/
+├── roadmap/                 # this weekly roadmap + CUDA track
+│   ├── README.md
+│   ├── week-01.md … week-32.md
+│   └── cuda-track.md
+├── week-01-environment/     # hands-on labs, one per week (added as I go)
+├── week-02-first-local-model/
+│   … (week-NN-topic/)
 ├── projects/
 │   ├── local-chat-api/
 │   ├── model-benchmark-dashboard/
@@ -121,6 +110,8 @@ from-api-to-gpu/
 ├── diagrams/
 └── docs/
 ```
+
+Hands-on lab dirs are named `week-NN-topic/` so they stay one-to-one with the weekly roadmap. A `GLOSSARY.md` collects term definitions as they're introduced.
 
 **Never** commit large model files. Store only: download scripts, model IDs, configuration, checksums (when needed), benchmark results, and adapter weights (only when licensing and file size permit).
 
