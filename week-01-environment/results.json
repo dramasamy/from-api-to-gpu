@@ -1,0 +1,11 @@
+{
+  "matrix": "4096x4096",
+  "dtype": "float32",
+  "iters": 20,
+  "cpu_ms": 173.8,
+  "gpu_ms": 7.53,
+  "cpu_gflops": 790.8,
+  "gpu_gflops": 18263.5,
+  "speedup": 23.1,
+  "device": "NVIDIA GB10"
+}

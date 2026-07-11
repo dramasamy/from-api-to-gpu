@@ -1,0 +1,6 @@
+# Week 1 — Python deps for the DGX Spark (ARM64, CUDA 13).
+# On the Spark, PyPI automatically serves the matching aarch64 + CUDA 13
+# wheels, so no special --index-url is needed. Versions pinned from my run;
+# your CUDA build suffix (e.g. +cu130) may differ with driver/date.
+torch==2.13.0
+numpy==2.5.1
