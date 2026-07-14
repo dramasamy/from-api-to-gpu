@@ -1,0 +1,31 @@
+model:
+  repository: ollama.com/library/phi4
+  architecture: phi3
+  total_parameters: 14.7B
+  active_parameters: 14.7B
+  precision: quantized
+  quantization: Q4_K_M
+  context_limit: 16384
+  license: MIT
+runtime:
+  engine: Ollama
+  version: 0.31.2
+  command: python benchmark.py --contexts 2048,4096 --runs 3
+  context_configured: [2048, 4096]
+  batch_configured: 1
+hardware:
+  device: NVIDIA GB10
+  memory: 121 GiB unified system memory
+  driver: 580.159.03
+  cuda: "13.0"
+  pytorch: 2.13.0+cu130
+results:
+  load_time_seconds: 5.9084
+  idle_memory_gb: TODO
+  peak_memory_gb: TODO
+  prompt_tokens: 18
+  output_tokens: 96
+  time_to_first_token_ms: 6034.1
+  warm_time_to_first_token_p50_ms: 174.0
+  warm_time_to_first_token_p95_ms: 196.1
+  tokens_per_second: 23.4
