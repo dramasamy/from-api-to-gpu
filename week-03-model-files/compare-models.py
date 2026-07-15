@@ -32,11 +32,16 @@ def summarize(repo_id: str) -> dict[str, Any]:
     config = load_json(repo_id, "config.json", info.sha)
     tokenizer = load_json(repo_id, "tokenizer_config.json", info.sha)
     safe_info = getattr(info, "safetensors", None)
-    weights = [
-        item
-        for item in info.siblings
-        if item.rfilename.endswith(".safetensors")
-    ]
+    # Sort by filename so "first shard" is deterministic (model-00001-of-...),
+    # not whatever order the Hub happens to list the siblings in.
+    weights = sorted(
+        (
+            item
+            for item in info.siblings
+            if item.rfilename.endswith(".safetensors")
+        ),
+        key=lambda item: item.rfilename,
+    )
     card = info.card_data.to_dict() if info.card_data else {}
     return {
         "repository": repo_id,
