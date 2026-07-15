@@ -1,0 +1,33 @@
+model:
+  repository: Qwen/Qwen2.5-3B-Instruct
+  revision: aa8e72537993ba99e69dfaafa59ed015b17504d1
+  architecture: Qwen2ForCausalLM
+  total_parameters: 3085938688
+  active_parameters: 3085938688
+  precision: bfloat16
+  quantization: none
+  context_limit: 32768
+  license: Qwen Research License Agreement
+runtime:
+  engine: huggingface-hub
+  version: 1.23.0
+  command: >-
+    ssh spark '~/venvs/w3/bin/python - --model Qwen/Qwen2.5-3B-Instruct'
+    < public/week-03-model-files/model-inspector.py
+  context_configured: null
+  batch_configured: null
+hardware:
+  device: NVIDIA DGX Spark
+  memory: 121 GiB unified system memory
+  driver: 580.159.03
+  cuda: "13.0"
+  pytorch: not used
+results:
+  load_time_seconds: null
+  idle_memory_gb: null
+  peak_memory_gb: null
+  prompt_tokens: null
+  output_tokens: null
+  time_to_first_token_ms: null
+  tokens_per_second: null
+notes: Metadata inspection only; model weights were not downloaded or loaded.

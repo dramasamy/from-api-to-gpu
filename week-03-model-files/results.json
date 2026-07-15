@@ -1,0 +1,105 @@
+{
+  "repository": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "base_model": "Qwen/Qwen2.5-3B",
+  "tags": [
+    "chat"
+  ],
+  "license_metadata": "other",
+  "license_title": "Qwen RESEARCH LICENSE AGREEMENT",
+  "noncommercial_only": true,
+  "pipeline_tag": "text-generation",
+  "architecture": "Qwen2ForCausalLM",
+  "model_type": "qwen2",
+  "total_parameters": 3085938688,
+  "parameter_groups": {
+    "BF16": 3085938688
+  },
+  "num_hidden_layers": 36,
+  "hidden_size": 2048,
+  "intermediate_size": 11008,
+  "num_attention_heads": 16,
+  "num_key_value_heads": 2,
+  "vocab_size": 151936,
+  "max_position_embeddings": 32768,
+  "torch_dtype": "bfloat16",
+  "tie_word_embeddings": true,
+  "bos_token_id": 151643,
+  "eos_token_id": [
+    151645,
+    151643
+  ],
+  "pad_token_id": 151643,
+  "bos_token": null,
+  "eos_token": "<|im_end|>",
+  "pad_token": "<|endoftext|>",
+  "tokenizer_class": "Qwen2Tokenizer",
+  "tokenizer_model_max_length": 131072,
+  "special_token_map": {
+    "151643": "<|endoftext|>",
+    "151644": "<|im_start|>",
+    "151645": "<|im_end|>"
+  },
+  "chat_template_present": true,
+  "chat_template_characters": 2507,
+  "safetensors_shards": 2,
+  "safetensors_tensors": 434,
+  "safetensors_total_bytes": 6171877376,
+  "generation_defaults": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repetition_penalty": 1.05
+  },
+  "files": [
+    {
+      "name": ".gitattributes",
+      "size_bytes": 1519
+    },
+    {
+      "name": "LICENSE",
+      "size_bytes": 7388
+    },
+    {
+      "name": "README.md",
+      "size_bytes": 4930
+    },
+    {
+      "name": "config.json",
+      "size_bytes": 661
+    },
+    {
+      "name": "generation_config.json",
+      "size_bytes": 242
+    },
+    {
+      "name": "merges.txt",
+      "size_bytes": 1671839
+    },
+    {
+      "name": "model-00001-of-00002.safetensors",
+      "size_bytes": 3968658944
+    },
+    {
+      "name": "model-00002-of-00002.safetensors",
+      "size_bytes": 2203268048
+    },
+    {
+      "name": "model.safetensors.index.json",
+      "size_bytes": 35581
+    },
+    {
+      "name": "tokenizer.json",
+      "size_bytes": 7031645
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size_bytes": 7305
+    },
+    {
+      "name": "vocab.json",
+      "size_bytes": 2776833
+    }
+  ]
+}
