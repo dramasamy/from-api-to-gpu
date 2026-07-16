@@ -23,6 +23,14 @@
 - Reasoning model
 - Multimodal model
 
+For GQA, use the Week 3 model's 16 query heads and 2 key/value heads. Explain
+why the counts differ, how heads are grouped, and how this changes KV-cache
+memory compared with standard multi-head attention.
+
+Connect RoPE and long-context extension back to repository config fields. Do not
+assume a tokenizer's `model_max_length` alone proves the model can run at that
+length.
+
 ## Particularly important distinction
 
 A model described as:

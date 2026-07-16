@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -30,6 +31,7 @@ def load_json(repo_id: str, filename: str, revision: str) -> dict[str, Any]:
 def summarize(repo_id: str) -> dict[str, Any]:
     info = HfApi().model_info(repo_id, files_metadata=True)
     config = load_json(repo_id, "config.json", info.sha)
+    generation = load_json(repo_id, "generation_config.json", info.sha)
     tokenizer = load_json(repo_id, "tokenizer_config.json", info.sha)
     safe_info = getattr(info, "safetensors", None)
     # Sort by filename so "first shard" is deterministic (model-00001-of-...),
@@ -43,6 +45,7 @@ def summarize(repo_id: str) -> dict[str, Any]:
         key=lambda item: item.rfilename,
     )
     card = info.card_data.to_dict() if info.card_data else {}
+    chat_template = tokenizer.get("chat_template") or ""
     return {
         "repository": repo_id,
         "revision": info.sha,
@@ -57,10 +60,22 @@ def summarize(repo_id: str) -> dict[str, Any]:
         "context": config.get("max_position_embeddings"),
         "dtype": config.get("torch_dtype"),
         "parameters": getattr(safe_info, "total", None),
+        "config_eos_token_id": config.get("eos_token_id"),
+        "generation_do_sample": generation.get("do_sample"),
+        "generation_eos_token_id": generation.get("eos_token_id"),
+        "generation_temperature": generation.get("temperature"),
+        "generation_top_p": generation.get("top_p"),
+        "generation_top_k": generation.get("top_k"),
+        "generation_repetition_penalty": generation.get("repetition_penalty"),
+        "tokenizer_eos_token": tokenizer.get("eos_token"),
         "chat_template": tokenizer.get("chat_template") is not None,
-        "license": card.get("license"),
+        "chat_template_sha256": hashlib.sha256(chat_template.encode()).hexdigest(),
         "first_shard_sha256": weights[0].lfs.sha256,
     }
+
+
+def display(value: Any) -> Any:
+    return "not set" if value is None else value
 
 
 def main() -> None:
@@ -81,14 +96,22 @@ def main() -> None:
         "context",
         "dtype",
         "parameters",
+        "config_eos_token_id",
+        "generation_do_sample",
+        "generation_eos_token_id",
+        "generation_temperature",
+        "generation_top_p",
+        "generation_top_k",
+        "generation_repetition_penalty",
+        "tokenizer_eos_token",
         "chat_template",
-        "license",
+        "chat_template_sha256",
         "first_shard_sha256",
     )
     for name in fields:
         print(name)
-        print(f"  base:     {base[name]}")
-        print(f"  instruct: {instruct[name]}")
+        print(f"  base:     {display(base[name])}")
+        print(f"  instruct: {display(instruct[name])}")
 
 
 if __name__ == "__main__":

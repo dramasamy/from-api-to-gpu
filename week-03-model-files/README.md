@@ -10,7 +10,10 @@ and instruction-tuned checkpoints.
 
 ## Prerequisites
 
-- A Linux machine reachable over SSH as `spark`.
+- Any macOS or Linux machine with internet access, `curl`, and `jq` for direct
+  repository inspection.
+- An SSH target named `spark` only if you want to reproduce the remote commands
+  exactly as shown in the series.
 - Python 3.12 or newer with `venv` support.
 - Internet access to the public Hugging Face Hub.
 - No Hugging Face token is required. A read-only `HF_TOKEN` raises API rate
@@ -32,7 +35,22 @@ and instruction-tuned checkpoints.
 
 ## Run
 
-From the parent repository:
+Start with the direct Hub API command on your laptop or GPU server:
+
+```bash
+MODEL=Qwen/Qwen2.5-3B-Instruct
+curl -s "https://huggingface.co/api/models/$MODEL" | jq '{
+  repository: .id,
+  base_model: .cardData.base_model,
+  architecture: .config.architectures[0],
+  checkpoint_files: [
+    .siblings[].rfilename | select(endswith(".safetensors"))
+  ]
+}'
+```
+
+The Python deliverable automates the deeper multi-file inspection. Run it from
+the parent repository:
 
 ```bash
 ssh spark 'bash -s' < public/week-03-model-files/setup.sh
@@ -42,12 +60,7 @@ ssh spark '~/venvs/w3/bin/python -' \
   < public/week-03-model-files/compare-models.py
 ```
 
-To inspect another public repository:
-
-```bash
-ssh spark '~/venvs/w3/bin/python - --model google/gemma-3-1b-it' \
-  < public/week-03-model-files/model-inspector.py
-```
-
 The inspector downloads only small metadata files. It lists weight sizes and
 hashes through the Hub API without downloading the Safetensors shards.
+The verified target is `Qwen/Qwen2.5-3B-Instruct`. Other model families may use
+different files or configuration keys.

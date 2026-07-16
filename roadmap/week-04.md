@@ -16,6 +16,7 @@
 - Shape
 - Parameter count
 - Precision
+- How `torch_dtype` maps to FP32, FP16, BF16, and bytes per parameter
 - Weight memory
 - Runtime memory
 - Activation memory
@@ -55,6 +56,9 @@ Output:
 Raw weight estimate: 35.0 GB
 Estimated operational range: ...
 ```
+
+Use one real model's `total_parameters` and `torch_dtype` from Week 3. Compare
+the calculated BF16 weight bytes with `model.safetensors.index.json`.
 
 ## Milestone check
 

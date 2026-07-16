@@ -10,6 +10,7 @@
 - Shape
 - Rank / dimensions
 - Data type
+- What FP32, FP16, and BF16 store, including bytes and precision tradeoffs
 - Device
 - CPU tensor versus CUDA tensor
 - Element-wise operations
