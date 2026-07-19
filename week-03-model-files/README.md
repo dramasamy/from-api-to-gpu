@@ -4,7 +4,7 @@ Reproducible lab for Week 3 of *From API to GPU*. The blog post reads a model's
 Hugging Face page in a browser; this lab is the **API way**: the same answers
 via `curl`, `jq`, and the Hub client, pinned to an exact revision and without
 downloading the 6.17 GB model weights. It also compares the base and
-instruction-tuned checkpoints by hashing their weight shards.
+instruction-tuned checkpoints using their Hub-reported weight-shard fingerprints.
 
 > Blog post: *From API to GPU, Week 3: Reading a Hugging Face Model Repository*
 >
@@ -78,7 +78,9 @@ Run it from the parent repository:
 
 ```bash
 ssh spark 'bash -s' < public/week-03-model-files/setup.sh
-ssh spark '~/venvs/w3/bin/python -' \
+ssh spark '~/venvs/w3/bin/python - \
+  --revision aa8e72537993ba99e69dfaafa59ed015b17504d1 \
+  --output /tmp/week03-results.json' \
   < public/week-03-model-files/model-inspector.py
 ssh spark '~/venvs/w3/bin/python -' \
   < public/week-03-model-files/compare-models.py
@@ -86,7 +88,8 @@ ssh spark '~/venvs/w3/bin/python -' \
 
 The inspector downloads only small metadata files. It lists weight sizes and
 hashes through the Hub API without downloading the Safetensors shards.
-`compare-models.py` hashes the first weight shard of each repository to prove the
-base and instruct checkpoints differ. The verified target is
+`compare-models.py` compares the Hub-reported SHA-256 (Git LFS) fingerprint of
+the first weight shard of each repository, proving the base and instruct
+checkpoints differ. The verified target is
 `Qwen/Qwen2.5-3B-Instruct`. Other model families may use different files or
 configuration keys.
