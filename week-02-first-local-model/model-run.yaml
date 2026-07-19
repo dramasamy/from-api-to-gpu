@@ -26,6 +26,4 @@ results:
   prompt_tokens: 18
   output_tokens: 96
   time_to_first_token_ms: 6034.1
-  warm_time_to_first_token_p50_ms: 174.0
-  warm_time_to_first_token_p95_ms: 196.1
   tokens_per_second: 23.4

@@ -71,25 +71,5 @@
       "output_tokens": 96,
       "tokens_per_second": 23.5
     }
-  ],
-  "summary": [
-    {
-      "context": 2048,
-      "warm_runs": 2,
-      "ttft_p50_ms": 174.0,
-      "ttft_p95_ms": 196.1,
-      "total_p50_ms": 4266.4,
-      "total_p95_ms": 4288.0,
-      "tokens_per_second_mean": 23.5
-    },
-    {
-      "context": 4096,
-      "warm_runs": 2,
-      "ttft_p50_ms": 173.9,
-      "ttft_p95_ms": 174.3,
-      "total_p50_ms": 4261.8,
-      "total_p95_ms": 4262.8,
-      "tokens_per_second_mean": 23.5
-    }
   ]
 }

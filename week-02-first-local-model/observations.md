@@ -6,5 +6,4 @@
 - This short prompt did not show a meaningful speed difference between the two
   context settings. The setting controls available capacity; it does not fill
   that capacity by itself.
-- The two warm runs per context are enough to learn the benchmark mechanics,
-  but not enough for a production capacity claim.
+- The repeated warm runs stayed close to each other in this small experiment.
