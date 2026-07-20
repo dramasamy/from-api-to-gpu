@@ -1,4 +1,4 @@
-# Week 4 — Parameters, weights, and memory
+# Week 4: Parameters, weights, and memory
 
 **Phase 1: Become comfortable running local models**
 
@@ -40,7 +40,8 @@ INT8: 7B × 1 byte   ≈ 7 GB
 INT4: 7B × 0.5 byte ≈ 3.5 GB
 ```
 
-Actual runtime usage is higher: caches, temporary tensors, runtime metadata, and other buffers.
+Actual runtime usage is higher: caches, temporary tensors, runtime metadata,
+and other buffers.
 
 ## Hands-on
 
@@ -53,13 +54,23 @@ python model_memory.py --parameters 70 --precision int4
 Output:
 
 ```text
-Raw weight estimate: 35.0 GB
-Estimated operational range: ...
+parameter_count    70,000,000,000
+precision          int4
+bits_per_parameter 4
+weight_bytes       35,000,000,000
+weight_gb          35.00 GB (decimal, / 1e9)
+weight_gib         32.60 GiB (binary, / 1024^3)
 ```
+
+Measure runtime memory separately. It cannot be derived from parameter count
+alone because context length, activations, caches, and runtime buffers vary.
 
 Use one real model's `total_parameters` and `torch_dtype` from Week 3. Compare
 the calculated BF16 weight bytes with `model.safetensors.index.json`.
 
 ## Milestone check
 
-By the end of this week I should have: deployed a local model, accessed it via API, inspected its config, calculated its theoretical memory footprint, and published repeatable performance results — i.e. **crossed from AI API consumer to beginner LLM deployment engineer.**
+By the end of this week I should have deployed a local model, accessed it via
+API, inspected its config, calculated its theoretical memory footprint, and
+published repeatable performance results. I have **crossed from AI API consumer
+to beginner LLM deployment engineer.**

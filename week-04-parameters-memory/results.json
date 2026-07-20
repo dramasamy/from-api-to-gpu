@@ -1,0 +1,43 @@
+{
+  "captured_date": "2026-07-15",
+  "runtime_rerun_date": "2026-07-19",
+  "calculator_examples": [
+    {
+      "label": "roadmap 70B INT4",
+      "parameter_count": 70000000000,
+      "precision": "int4",
+      "weight_bytes": 35000000000,
+      "weight_gb": 35.0
+    },
+    {
+      "label": "Qwen2.5-3B-Instruct BF16 exact",
+      "parameter_count": 3085938688,
+      "precision": "bf16",
+      "weight_bytes": 6171877376,
+      "weight_gb": 6.17,
+      "matches_safetensors_index_total_size": true
+    }
+  ],
+  "quantized_reality": {
+    "model": "llama3.2:3b",
+    "parameter_count": 3212749888,
+    "quantization": "Q4_K_M",
+    "tensor_types": {"Q4_K": 168, "Q6_K": 29, "F32": 58},
+    "clean_int4_weight_bytes": 1606374944,
+    "actual_weight_layer_bytes": 2019377376,
+    "effective_on_disk_bits_per_parameter": 5.028,
+    "manifest_size_matches_blob": true,
+    "manifest_digest_matches_blob": true
+  },
+  "runtime_versus_weights": {
+    "model": "llama3.2:3b",
+    "on_disk_gb": 2.0,
+    "loaded_gb_ctx_4096": 2.6,
+    "loaded_gb_ctx_16384": 4.1,
+    "processor": "100% GPU"
+  },
+  "hardware": {
+    "device": "NVIDIA GB10",
+    "unified_memory_gib": 121
+  }
+}
