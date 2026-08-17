@@ -1,0 +1,28 @@
+{
+  "captured_date": "2026-07-16",
+  "hardware": {
+    "device": "NVIDIA GB10",
+    "torch": "2.13.0+cu130",
+    "cuda_runtime": "13.0"
+  },
+  "dtype_bytes": {
+    "float32": 4,
+    "float16": 2,
+    "bfloat16": 2
+  },
+  "matmul": {
+    "size": 4096,
+    "warmup": 5,
+    "gpu_iters": 20,
+    "cpu_iters": 5,
+    "device": "cuda",
+    "precisions": [
+      { "precision": "fp32", "median_ms": 7.44, "gflops": 18473.0, "peak_mib": 224.0 },
+      { "precision": "fp16", "median_ms": 1.548, "gflops": 88807.9, "peak_mib": 128.0 },
+      { "precision": "bf16", "median_ms": 1.576, "gflops": 87202.3, "peak_mib": 128.0 }
+    ],
+    "cpu_fp32_ms": 168.281,
+    "gpu_speedup_fp32": 22.6
+  },
+  "note": "Timings vary run to run. GPU rows are the median of 20 iterations after warmup; the CPU row is the median of 5. Absolute ms shift between runs and fp16/bf16 can swap, but 16-bit beats fp32 and gpu beats cpu. peak_mib is torch.cuda.max_memory_allocated, not total system memory."
+}

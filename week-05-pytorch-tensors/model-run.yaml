@@ -1,0 +1,28 @@
+environment:
+  engine: PyTorch
+  version: 2.13.0+cu130
+  command: >-
+    ssh spark '~/venvs/w1/bin/python - --size 4096 --iters 20'
+    < benchmark_matmul.py
+hardware:
+  device: NVIDIA GB10
+  memory: 121 GiB unified system memory
+  driver: 580.159.03
+  cuda: "13.0"
+workload:
+  operation: square matrix multiply
+  size: 4096
+  precisions: [fp32, fp16, bf16]
+results:
+  gpu_fp32_median_ms: 7.44
+  gpu_fp16_median_ms: 1.548
+  gpu_bf16_median_ms: 1.576
+  gpu_fp32_gflops: 18473.0
+  cpu_fp32_median_ms: 168.281
+  gpu_speedup_fp32: 22.6
+  fp32_peak_mib: 224.0
+  fp16_peak_mib: 128.0
+notes: >-
+  No language model was loaded. Week 5 measures raw tensor operations. GPU
+  timings are the median of 20 iterations after warmup and the CPU is the median
+  of 5. Timings vary run to run.

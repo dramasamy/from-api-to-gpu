@@ -1,0 +1,6 @@
+# Reuses the Week 1 environment ~/venvs/w1 (already has CUDA-enabled PyTorch).
+# Pinned build actually used on the DGX Spark:
+torch==2.13.0+cu130
+# For a fresh environment, install this file with the matching CUDA index:
+#   pip install -r requirements.txt \
+#       --index-url https://download.pytorch.org/whl/cu130
