@@ -1,0 +1,51 @@
+model:
+  repository: none (trained from scratch this week)
+  architecture: single linear layer, nn.Linear(1, 1)
+  total_parameters: 2
+  active_parameters: 2
+  precision: FP32
+  quantization: none
+  context_limit: n/a
+  license: n/a (own code)
+runtime:
+  engine: PyTorch
+  version: 2.13.0+cu130
+  command: >-
+    ssh spark '~/venvs/w1/bin/python -' < train_tiny.py
+  context_configured: n/a
+  batch_configured: full batch (all 6 samples per step)
+hardware:
+  device: CPU (intentional; problem is far too small for the GPU)
+  memory: 121 GiB unified; CPU memory use for this run not measured
+  driver: 580.159.03
+  cuda: "13.0"
+  pytorch: 2.13.0+cu130
+results:
+  load_time_seconds: n/a (no pretrained weights)
+  idle_memory_gb: n/a
+  peak_memory_gb: n/a
+  prompt_tokens: n/a
+  output_tokens: n/a
+  time_to_first_token_ms: n/a
+  tokens_per_second: n/a
+training:
+  problem: Celsius to Fahrenheit (F = C * 1.8 + 32)
+  loss: MSELoss
+  optimizer: SGD
+  learning_rate: 0.0003
+  epochs: 20000
+  seed: 0
+  initial_weight: -0.007487
+  initial_bias: 0.536444
+  first_loss: 10352.207
+  first_weight_grad: -9237.2129
+  first_bias_grad: -127.3941
+  learned_weight: 1.8
+  learned_bias: 31.9981
+  final_loss: 2.9333932616282254e-06
+  inference_25c_f: 76.9985
+notes: >-
+  No language model involved. Week 6 trains a one-neuron linear model on raw
+  Celsius inputs to make weights, gradients, loss, and the optimizer visible.
+  Raw inputs force a small learning rate; a large rate diverges. Seeded for
+  reproducibility.
