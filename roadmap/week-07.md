@@ -22,4 +22,5 @@ Write the training loop manually. Do not hide it behind a trainer yet.
 
 ## Deliverable
 
-A notebook showing each weight before and after training.
+A runnable program (script or notebook) showing each weight before and after
+training.

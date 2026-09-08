@@ -1,0 +1,5 @@
+# Reuses the Week 1 environment ~/venvs/w1 (already has PyTorch).
+# The pip metadata reports the version as 2.13.0, so pin that:
+torch==2.13.0
+# On the DGX Spark this resolves to the CUDA build 2.13.0+cu130, but this lab
+# runs on the CPU, so a CPU-only build of the same version works too.

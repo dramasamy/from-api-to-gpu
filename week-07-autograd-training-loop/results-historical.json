@@ -1,0 +1,53 @@
+{
+  "seed": 0,
+  "epochs": 20000,
+  "lr": 0.0003,
+  "initial_weight": 1.540996,
+  "initial_bias": -0.293429,
+  "first_loss": 1491.7762,
+  "first_weight_grad_backward": -2314.6404,
+  "first_weight_grad_by_hand": -2314.6404,
+  "first_bias_grad_backward": -73.8247,
+  "first_bias_grad_by_hand": -73.8247,
+  "learned_weight": 1.8,
+  "learned_bias": 31.9981,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 965.8369,
+      "weight": 2.2354,
+      "bias": -0.2713
+    },
+    {
+      "epoch": 50,
+      "loss": 849.9656,
+      "weight": 2.0501,
+      "bias": 0.5317
+    },
+    {
+      "epoch": 1000,
+      "loss": 319.421,
+      "weight": 1.9533,
+      "bias": 12.709
+    },
+    {
+      "epoch": 5000,
+      "loss": 5.1848,
+      "weight": 1.8195,
+      "bias": 29.5422
+    },
+    {
+      "epoch": 10000,
+      "loss": 0.03,
+      "weight": 1.8015,
+      "bias": 31.8129
+    },
+    {
+      "epoch": 20000,
+      "loss": 0.0,
+      "weight": 1.8,
+      "bias": 31.9981
+    }
+  ],
+  "inference_25c_f": 76.9985
+}
